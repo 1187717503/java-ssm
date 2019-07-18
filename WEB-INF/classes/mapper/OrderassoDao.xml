@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.OrderassoDao">
+	<insert id="insertOrderass" parameterType="Orderassociation">
+		insert into
+		orderassociation (ordernum,phone,status) values
+		(#{ordernum},#{phone},#{status})
+
+	</insert>
+	<select id="select" resultType="com.sy.entity.NewOrder">
+
+		select
+		neworder.ordernum,neworder.type,neworder.`status`,neworder.totalpay,neworder.num,neworder.date,neworder.product,neworder.productname,neworder.productpic,neworder.price,neworder.productindex,neworder.feedback
+		from neworder LEFT JOIN orderassociation ON neworder.ordernum =
+		orderassociation.ordernum WHERE orderassociation.`status`=1
+
+	</select>
+	
+	<update id="update" parameterType="Orderassociation">
+	update orderassociation set status=#{status} where ordernum=#{ordernum}
+	</update>
+</mapper>

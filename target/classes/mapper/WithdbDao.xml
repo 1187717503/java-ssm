@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.WithdbDao">
+	<select id="selectWithdrawBank" resultType="com.sy.entity.WithdrawBank"
+		parameterType="java.lang.String">
+		select * from withdrawbank where phone = #{phone}
+	</select>
+
+	<insert id="insertWithdrawBank" parameterType="WithdrawBank">
+
+		insert into withdrawbank (phone,bankcard,bankdeposit)
+		values
+		(#{phone},#{bankcard},#{bankdeposit})
+
+	</insert>
+
+</mapper>

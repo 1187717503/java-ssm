@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.AdminDao">
+
+   <select id="findByadminname" resultType="com.sy.entity.Admin"
+		parameterType="java.util.Map">
+
+		select * from administrator where adminname = #{adminname} and password = #{password}
+
+	</select>
+	<select id="find" resultType="com.sy.entity.Admin"
+		parameterType="string">
+
+		select * from administrator where adminname = #{adminname} 
+
+	</select>
+	<insert id="regist" parameterType="Admin">
+
+		insert into administrator (adminname,password)
+		values
+		(#{adminname},#{password})
+
+	</insert>
+</mapper>

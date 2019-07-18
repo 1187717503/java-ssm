@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.RealDao">
+	<insert id="insertReal" parameterType="RealName">
+		insert into realname (phone,name,idcard) values (#{phone},#{name},#{idcard})
+	</insert>
+	
+	<select id="selectReal" resultType="com.sy.entity.RealName"
+		parameterType="string">
+
+		select * from realname where phone = #{phone}
+
+	</select>
+	<update id="updateReal" parameterType="RealName">
+	   update realname set name = #{name},idcard = #{idcard} where phone=#{phone}
+	</update>
+	
+	<select id="selectPhone" resultType="com.sy.entity.SelectPhone"
+		parameterType="java.lang.String">
+
+		select realname.`name`, realname.idcard ,submit.address,realname.phone from realname left join submit on realname.phone = submit.phone WHERE realname.phone =#{phone}  and submit.phone=#{phone}
+
+	</select>
+</mapper>

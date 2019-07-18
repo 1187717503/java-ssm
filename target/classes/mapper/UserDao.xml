@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.UserDao">
+	<!-- 目的：为DAO接口方法提供sql语句配置 -->
+	<!-- 查询用户和密码进行登录 -->
+	<select id="findByUsernameAndPassword" resultType="com.sy.entity.User"
+		parameterType="java.util.Map">
+
+		select * from userinfo where phone = #{phone} and password = #{password}
+
+	</select>
+
+
+	<select id="findByUsername" resultType="com.sy.entity.User"
+		parameterType="string">
+
+		select * from userinfo where phone = #{phone}
+
+	</select>
+
+   <select id="selectLevel" resultType="com.sy.entity.User" parameterType="string">
+     select level,phone from userinfo where phone = #{phone}
+   </select>
+
+	<!-- 增加用户名和密码进行注册 -->
+	<insert id="registerByUsernameAndPassword" parameterType="User">
+
+		insert into userinfo (phone,password,agencyIndex)
+		values
+		(#{phone},#{password},#{agencyIndex})
+
+	</insert>
+   <update id="update" parameterType="User">
+    update userinfo set password=#{password} where phone=#{phone}
+   </update>
+
+
+</mapper>	

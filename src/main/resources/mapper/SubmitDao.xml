@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.SubmitDao">
+	<insert id="insertSub" parameterType="Submit">
+		insert into submit (password,address,phone) values (#{password},#{address},#{phone})
+	</insert>
+	<select id="selectSub" resultType="com.sy.entity.Submit"
+	parameterType="string">
+	  select * from submit where phone = #{phone}
+	</select>
+	<update id="updateSub" parameterType="Submit">
+	    update submit set password = #{password},address = #{address} where phone=#{phone}
+	</update>
+</mapper>

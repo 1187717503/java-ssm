@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.WithdrawDao">
+
+	<select id="findByPhone" resultType="com.sy.entity.WithdrawMoney"
+		parameterType="java.lang.String">
+		select * from withdrawmoney where phone = #{phone}
+	</select>
+	
+	<select id="selectall" resultType="com.sy.entity.WithdrawMoney">
+		select * from withdrawmoney 
+	</select>
+	
+	<select id="select" resultType="com.sy.entity.WithdrawMoney">
+		select * from withdrawmoney where status=0
+	</select>
+	
+	<insert id="insertWithdraw" parameterType="WithdrawMoney"> 
+	    
+	    insert into withdrawmoney (phone,num,address,caseorder,date,realnum,status) 
+	    values 
+	    (#{phone},#{num},#{address},#{caseorder},#{date},#{realnum},#{status}) 
+	
+	</insert> 
+	<update id="update" parameterType="WithdrawMoney">
+	update withdrawmoney set status=#{status} where caseorder=#{caseorder}
+	</update>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.BindDao">
+	<select id="selectBind" resultType="com.sy.entity.BindBank"
+		parameterType="java.lang.String">
+
+		select * from bindingbank where phone = #{phone}
+
+	</select>
+	<insert id="insertBind" parameterType="BindBank">
+	   insert into bindingbank (phone,bankcard,bankaddress) values (#{phone},#{bankcard},#{bankaddress})
+	</insert>
+</mapper>
